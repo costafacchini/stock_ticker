@@ -12,6 +12,8 @@ gem "bootsnap", require: false
 
 gem "rack-cors"
 
+gem 'webmock', '3.14.0', group: :test
+
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   gem "rspec-rails", "~> 6.1.0"
