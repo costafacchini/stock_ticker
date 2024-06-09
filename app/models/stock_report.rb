@@ -3,7 +3,7 @@ class StockReport
 
   def initialize(stock_ticker)
     @report = []
-    @report << Struct.new(:label, :maximum, :minimum, :average).new('Price', stock_ticker.maximum_price,  stock_ticker.minimum_price, stock_ticker.average_price)
-    @report << Struct.new(:label, :maximum, :minimum, :average).new('Volume', stock_ticker.maximum_volume, stock_ticker.minimum_volume, stock_ticker.average_volume)
+    @report << Statistics.new(label: 'Price', maximum: stock_ticker.maximum_price, minimum: stock_ticker.minimum_price)
+    @report << Statistics.new(label: 'Volume', maximum: stock_ticker.maximum_volume, minimum: stock_ticker.minimum_volume)
   end
 end
