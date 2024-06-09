@@ -1,19 +1,8 @@
 class V1::StockReportController < ApplicationController
   def show
-    report = [
-      {
-        label: 'Price',
-        maximum: 100.0,
-        minimum: 50.0,
-        average: 75.0
-      },
-      {
-        label: 'Volume',
-        maximum: 10.0,
-        minimum: 6.0,
-        average: 8.0
-      }
-    ]
+    stock_ticker = Struct.new(:maximum_price, :minimum_price, :average_price, :maximum_volume, :minimum_volume, :average_volume)
+                         .new(100.0, 50.0, 75.0, 10.0, 6.0, 8.0)
+    report = StockReport.new(stock_ticker)
 
     render json: { report: report }, status: :ok
   end
