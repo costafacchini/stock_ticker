@@ -1,14 +1,15 @@
+# frozen_string_literal: true
+
 class StockTickerFinder
   def initialize(stock_ticker)
     @http = Http.new
     @stock_ticker = stock_ticker
-    @api_key = Rails.application.credentials[ENV["RAILS_ENV"]][:POLYGON_API_KEY]
+    @api_key = Rails.application.credentials[ENV.fetch('RAILS_ENV', nil)][:POLYGON_API_KEY]
   end
 
   def call
     response = @http.get(url)
-    stock_ticker = PolygonStockTicker.new(response)
-    stock_ticker
+    PolygonStockTicker.new(response)
   end
 
   private

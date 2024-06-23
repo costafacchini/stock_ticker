@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class V1::StockReportController < ApplicationController
   def show
     stock_ticker = StockTickerFinder.new(params[:id]).call

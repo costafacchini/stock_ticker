@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PolygonStockTicker
   attr_reader :success, :error, :maximum_price, :minimum_price, :maximum_volume, :minimum_volume
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Statistics
   attr_reader :label, :maximum, :minimum, :average, :format_to_money
 

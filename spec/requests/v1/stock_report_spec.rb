@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "V1::StockReportController", type: :request do
+RSpec.describe 'V1::StockReportController' do
   describe 'GET /show' do
     context 'when stock finder returns with success' do
       it 'renders a successful response' do
@@ -15,11 +17,11 @@ RSpec.describe "V1::StockReportController", type: :request do
         expect(stock_ticker_finder).to have_received(:call)
 
         expect(response).to be_successful
-        expect(response.body). to include 'report'
+        expect(response.body).to include 'report'
       end
     end
 
-    context 'when stock finder returns with success' do
+    context 'when stock finder returns with error' do
       it 'renders a error response' do
         stock_ticker_finder = instance_double(StockTickerFinder)
         allow(StockTickerFinder).to receive(:new).with('AABC').and_return(stock_ticker_finder)
@@ -30,7 +32,7 @@ RSpec.describe "V1::StockReportController", type: :request do
         expect(stock_ticker_finder).to have_received(:call)
 
         expect(response).to have_http_status(:not_found)
-        expect(response.body). to include 'some error'
+        expect(response.body).to include 'some error'
       end
     end
   end

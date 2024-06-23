@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe StockTickerFinder do
@@ -8,9 +10,9 @@ RSpec.describe StockTickerFinder do
       it 'returns as instance of PolygonStockTicker' do
         stub_request(:get, 'https://api.polygon.io/v2/aggs/ticker/AABB/range/1/day/2023-01-01/2023-12-31?apiKey=abc1234')
           .to_return({
-            status: 200,
-            body: { success: true }.to_json
-          })
+                       status: 200,
+                       body: { success: true }.to_json
+                     })
 
         expect(test_subject).to be_an_instance_of(PolygonStockTicker)
       end
