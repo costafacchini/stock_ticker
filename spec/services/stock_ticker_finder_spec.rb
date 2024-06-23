@@ -6,7 +6,7 @@ RSpec.describe StockTickerFinder do
 
     context 'when everything goes well' do
       it 'returns as instance of PolygonStockTicker' do
-        stub_request(:get, 'https://api.polygon.io/v2/aggs/ticker/AABB/range/1/day/2023-01-01/2023-12-31?apiKey=taIMgMrmnZ8SUZmdpq9_7ANRDxw3IPIx')
+        stub_request(:get, 'https://api.polygon.io/v2/aggs/ticker/AABB/range/1/day/2023-01-01/2023-12-31?apiKey=abc1234')
           .to_return({
             status: 200,
             body: { success: true }.to_json
@@ -18,7 +18,7 @@ RSpec.describe StockTickerFinder do
 
     context 'when a communication error happens' do
       it 'returns an error' do
-        stub_request(:get, 'https://api.polygon.io/v2/aggs/ticker/AABB/range/1/day/2023-01-01/2023-12-31?apiKey=taIMgMrmnZ8SUZmdpq9_7ANRDxw3IPIx').to_timeout
+        stub_request(:get, 'https://api.polygon.io/v2/aggs/ticker/AABB/range/1/day/2023-01-01/2023-12-31?apiKey=abc1234').to_timeout
 
         expect(test_subject.error).to eql 'Unable to communicate with the API: execution expired'
       end
